@@ -11,6 +11,22 @@ let businessHours = [
 ]
 
 
-$('#currentDay').text(dayjs().format('dddgd, MMMM D'));
+let timeSection = 'timeSection';
+$('')
+let hourBlock = $('<div>');
+$('.container').append(hourBlock)
 
 
+
+$('#currentDay').text(dayjs().format('dddd, MMMM D'));
+
+
+let formattedBhours = businessHours.map(function(time) {
+    return time.format("hA");
+});
+
+$.each(formattedBhours, function(index, time) {
+    let hour = $('<li>').addClass('row hour time-block').text(time);
+
+    $(hourBlock).append(hour);
+})
